@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>clashCommunity_api</RootNamespace>
+    <UserSecretsId>afded900-feff-45a7-8e63-c9bd4bdad716</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
