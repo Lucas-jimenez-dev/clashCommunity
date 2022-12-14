@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>clashCommunity_api</RootNamespace>
+    <UserSecretsId>afded900-feff-45a7-8e63-c9bd4bdad716</UserSecretsId>
     <UserSecretsId>5c6c0f33-2795-455f-a878-30be3af5eb0c</UserSecretsId>
   </PropertyGroup>
 
