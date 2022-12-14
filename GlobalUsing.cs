@@ -1,0 +1,6 @@
+﻿global using System.ComponentModel.DataAnnotations.Schema;
+global using Microsoft.EntityFrameworkCore;
+global using clashCommunity_api.Models;
+global using clashCommunity_api.Tools;
+
+
