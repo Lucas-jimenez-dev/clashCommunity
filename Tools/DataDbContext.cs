@@ -12,8 +12,11 @@ namespace clashCommunity_api.Tools
 
           }*/
 
-        private string connection = @"server=localhost; port=3309;database=clashcommunitydb;uid=root;password=root;Connection Timeout=30;";
-        public DbSet<Userapp>? Users { get; set; }
+        private string connection = @"server=localhost; port=3309;database=clashCommunity;uid=root;password=root;Connection Timeout=30;";
+        public DbSet<UserApp>? Users { get; set; }
+        public DbSet<RoleApp>? RoleApp { get; set; }
+        public DbSet<Clan>? Clan { get; set; }
+        public DbSet<Candidature>? Candidature { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

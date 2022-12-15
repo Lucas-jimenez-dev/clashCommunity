@@ -2,35 +2,35 @@
 
 namespace clashCommunity_api.Repositories
 {
-    public class UserRepository : BaseRepository<Userapp>
+    public class UserAppRepository : BaseRepository<UserApp>
     {
 
-        public UserRepository(DataDbContext dataContext) : base(dataContext)
+        public UserAppRepository(DataDbContext dataContext) : base(dataContext)
         {
         }
 
-        public override List<Userapp> FindAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Userapp FindById(int id)
+        public override List<UserApp> FindAll()
         {
             throw new NotImplementedException();
         }
 
-        public override bool Save(Userapp element)
+        public override UserApp FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Save(UserApp element)
         {
             throw new NotImplementedException();
         }
 
 
-        public override List<Userapp> SearchAll(Func<Userapp, bool> SearchMethod)
+        public override List<UserApp> SearchAll(Func<UserApp, bool> SearchMethod)
         {
             throw new NotImplementedException();
         }
 
-        public override Userapp SearchOne(Func<Userapp, bool> SearchMethod)
+        public override UserApp SearchOne(Func<UserApp, bool> SearchMethod)
         {
             throw new NotImplementedException();
         }

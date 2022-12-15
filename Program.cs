@@ -27,7 +27,10 @@ connectionString = "Server=localhost;Database=clashcommunitydb;User=root; Passwo
 builder.Services.AddDbContext<DataDbContext>();
 
 
-builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<UserAppRepository>();
+builder.Services.AddScoped<CandidatureRepository>();
+builder.Services.AddScoped<ClanRepository>();
+builder.Services.AddScoped<RoleAppRepository>();
 
 var app = builder.Build();
 

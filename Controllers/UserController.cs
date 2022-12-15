@@ -7,9 +7,9 @@ namespace clashCommunity_api.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private UserRepository _userRepository;
+        private UserAppRepository _userRepository;
 
-        public UserController(UserRepository userRepository)
+        public UserController(UserAppRepository userRepository)
         {
             _userRepository = userRepository;
         }

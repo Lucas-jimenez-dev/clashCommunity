@@ -10,8 +10,8 @@ using clashCommunity_api.Tools;
 namespace clashCommunity_api.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20221215115035_init")]
-    partial class init
+    [Migration("20221215132918_first-migration")]
+    partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,36 +20,69 @@ namespace clashCommunity_api.Migrations
                 .HasAnnotation("ProductVersion", "6.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("clashCommunity_api.Models.Candidature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<int>("ClanId")
+                        .HasColumnType("int")
+                        .HasColumnName("clan_id");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("status");
+
+                    b.Property<int>("UserAppId")
+                        .HasColumnType("int")
+                        .HasColumnName("userapp_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClanId");
+
+                    b.HasIndex("UserAppId");
+
+                    b.ToTable("candidature");
+                });
+
             modelBuilder.Entity("clashCommunity_api.Models.Clan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("id");
 
                     b.Property<string>("Tag")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("longtext")
+                        .HasColumnName("tag");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clan");
+                    b.ToTable("clan");
                 });
 
             modelBuilder.Entity("clashCommunity_api.Models.RoleApp", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("id");
 
                     b.Property<string>("Role")
-                        .HasColumnType("longtext");
+                        .HasColumnType("longtext")
+                        .HasColumnName("role");
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoleApp");
+                    b.ToTable("roleApp");
                 });
 
-            modelBuilder.Entity("clashCommunity_api.Models.Userapp", b =>
+            modelBuilder.Entity("clashCommunity_api.Models.UserApp", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,13 +99,19 @@ namespace clashCommunity_api.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("varchar(255)")
                         .HasColumnName("email");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("password");
+
+                    b.Property<string>("Pseudo")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("pseudo");
 
                     b.Property<int>("RoleAppId")
                         .HasColumnType("int")
@@ -87,12 +126,34 @@ namespace clashCommunity_api.Migrations
 
                     b.HasIndex("ClanId");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.HasIndex("RoleAppId");
 
-                    b.ToTable("Users");
+                    b.ToTable("userApp");
                 });
 
-            modelBuilder.Entity("clashCommunity_api.Models.Userapp", b =>
+            modelBuilder.Entity("clashCommunity_api.Models.Candidature", b =>
+                {
+                    b.HasOne("clashCommunity_api.Models.Clan", "Clan")
+                        .WithMany()
+                        .HasForeignKey("ClanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("clashCommunity_api.Models.UserApp", "UserApp")
+                        .WithMany()
+                        .HasForeignKey("UserAppId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Clan");
+
+                    b.Navigation("UserApp");
+                });
+
+            modelBuilder.Entity("clashCommunity_api.Models.UserApp", b =>
                 {
                     b.HasOne("clashCommunity_api.Models.Clan", "Clan")
                         .WithMany()
