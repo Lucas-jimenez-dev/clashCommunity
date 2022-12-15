@@ -6,6 +6,11 @@
         {
         }
 
+        public override bool Delete(RoleApp element)
+        {
+            throw new NotImplementedException();
+        }
+
         public override List<RoleApp> FindAll()
         {
             throw new NotImplementedException();

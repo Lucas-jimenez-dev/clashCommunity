@@ -6,6 +6,11 @@
         {
         }
 
+        public override bool Delete(Candidature element)
+        {
+            throw new NotImplementedException();
+        }
+
         public override List<Candidature> FindAll()
         {
             throw new NotImplementedException();

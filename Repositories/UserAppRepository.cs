@@ -9,6 +9,11 @@ namespace clashCommunity_api.Repositories
         {
         }
 
+        public override bool Delete(UserApp element)
+        {
+            throw new NotImplementedException();
+        }
+
         public override List<UserApp> FindAll()
         {
             throw new NotImplementedException();

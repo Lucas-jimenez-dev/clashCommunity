@@ -6,6 +6,11 @@
         {
         }
 
+        public override bool Delete(Clan element)
+        {
+            throw new NotImplementedException();
+        }
+
         public override List<Clan> FindAll()
         {
             throw new NotImplementedException();
