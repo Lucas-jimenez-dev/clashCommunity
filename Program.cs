@@ -1,3 +1,7 @@
+
+
+using clashCommunity_api;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -5,10 +9,29 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Test pour connecter à mysql
-//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<DataDbContext>();
+/*Récupère le secret et le stocke dans un objet de type (classe) SecretSettings.
+ * 
+ * Dans le secret.json : 
+
+    {
+        "db:ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=Movie-1;Trusted_Connection=True;MultipleActiveResultSets=true",
+        "db:ServiceApiKey": "toto"
+    }
+*/
+
+var SecretConfig = builder.Configuration.GetSection("db").Get<SecretSettings>();
+var connectionString = SecretConfig.ConnectionString;
+
+//Configure DataDBContext avec le secret récupéré dans l'objet
+builder.Services.AddDbContext<DataDbContext>(option =>
+{
+    option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
+
+
+
+builder.Services.AddScoped<UserRepository>();
 
 var app = builder.Build();
 
@@ -24,5 +47,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
