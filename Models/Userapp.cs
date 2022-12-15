@@ -1,5 +1,4 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
 
 namespace clashCommunity_api.Models
 {
@@ -9,6 +8,7 @@ namespace clashCommunity_api.Models
         [Column("id")]
 
         public int Id { get; set; }
+
 
       /*  [Column("first_name")]
         public string FirstName { get; set; }

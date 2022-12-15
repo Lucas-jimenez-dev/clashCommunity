@@ -22,13 +22,9 @@ builder.Services.AddSwaggerGen();
 
 var SecretConfig = builder.Configuration.GetSection("db").Get<SecretSettings>();
 var connectionString = SecretConfig.ConnectionString;
-
+connectionString = "Server=localhost;Database=clashcommunitydb;User=root; Password=root; Port=3309";
 //Configure DataDBContext avec le secret récupéré dans l'objet
-builder.Services.AddDbContext<DataDbContext>(option =>
-{
-    option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-});
-
+builder.Services.AddDbContext<DataDbContext>();
 
 
 builder.Services.AddScoped<UserRepository>();
