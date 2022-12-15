@@ -25,5 +25,7 @@ namespace clashCommunity_api.Repositories
         public abstract T SearchOne(Func<T, bool> SearchMethod);
 
         public abstract List<T> SearchAll(Func<T, bool> SearchMethod);
+
+        public abstract bool Delete(T element);
     }
 }
