@@ -8,22 +8,24 @@
 
         public override bool Delete(Clan element)
         {
-            throw new NotImplementedException();
+            _dataContext.Clan.Remove(element);
+            return Update();
         }
 
         public override List<Clan> FindAll()
         {
-            throw new NotImplementedException();
+            return _dataContext.Clan.ToList();
         }
 
         public override Clan FindById(int id)
         {
-            throw new NotImplementedException();
+            return _dataContext.Clan.FirstOrDefault(clan => clan.Id == id);
         }
 
         public override bool Save(Clan element)
         {
-            throw new NotImplementedException();
+            _dataContext.Clan.Add(element);
+            return Update();
         }
 
         public override List<Clan> SearchAll(Func<Clan, bool> SearchMethod)

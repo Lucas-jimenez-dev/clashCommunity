@@ -13,11 +13,5 @@ namespace clashCommunity_api.Controllers
         {
             _userRepository = userRepository;
         }
-
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok(_userRepository.Test());
-        }
     }
 }

@@ -8,22 +8,24 @@
 
         public override bool Delete(RoleApp element)
         {
-            throw new NotImplementedException();
+            _dataContext.RoleApp.Remove(element);
+            return Update();
         }
 
         public override List<RoleApp> FindAll()
         {
-            throw new NotImplementedException();
+            return _dataContext.RoleApp.ToList();
         }
 
         public override RoleApp FindById(int id)
         {
-            throw new NotImplementedException();
+            return _dataContext.RoleApp.FirstOrDefault(roleApp => roleApp.Id == id);
         }
 
         public override bool Save(RoleApp element)
         {
-            throw new NotImplementedException();
+            _dataContext.RoleApp.Add(element);
+            return Update();
         }
 
         public override List<RoleApp> SearchAll(Func<RoleApp, bool> SearchMethod)

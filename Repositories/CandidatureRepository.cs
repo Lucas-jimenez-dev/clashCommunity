@@ -8,22 +8,24 @@
 
         public override bool Delete(Candidature element)
         {
-            throw new NotImplementedException();
+            _dataContext.Candidature.Remove(element);
+            return Update();
         }
 
         public override List<Candidature> FindAll()
         {
-            throw new NotImplementedException();
+            return _dataContext.Candidature.ToList();
         }
 
         public override Candidature FindById(int id)
         {
-            throw new NotImplementedException();
+            return _dataContext.Candidature.FirstOrDefault(cand => cand.Id == id);
         }
 
         public override bool Save(Candidature element)
         {
-            throw new NotImplementedException();
+            _dataContext.Candidature.Add(element);
+            return Update();
         }
 
         public override List<Candidature> SearchAll(Func<Candidature, bool> SearchMethod)

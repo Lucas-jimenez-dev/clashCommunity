@@ -11,37 +11,35 @@ namespace clashCommunity_api.Repositories
 
         public override bool Delete(UserApp element)
         {
-            throw new NotImplementedException();
+            _dataContext.UserApp.Remove(element);
+            return Update();
         }
 
         public override List<UserApp> FindAll()
         {
-            throw new NotImplementedException();
+            return _dataContext.UserApp.ToList();
         }
 
         public override UserApp FindById(int id)
         {
-            throw new NotImplementedException();
+            return _dataContext.UserApp.FirstOrDefault(cand => cand.Id == id);
         }
 
         public override bool Save(UserApp element)
         {
-            throw new NotImplementedException();
+            _dataContext.UserApp.Add(element);
+            return Update();
         }
 
 
         public override List<UserApp> SearchAll(Func<UserApp, bool> SearchMethod)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();    
         }
 
         public override UserApp SearchOne(Func<UserApp, bool> SearchMethod)
         {
             throw new NotImplementedException();
-        }
-        public string Test()
-        {
-            return "oktest";
         }
     }
 }

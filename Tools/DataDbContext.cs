@@ -13,7 +13,7 @@ namespace clashCommunity_api.Tools
           }*/
 
         private string connection = @"server=localhost; port=3309;database=clashCommunity;uid=root;password=root;Connection Timeout=30;";
-        public DbSet<UserApp>? Users { get; set; }
+        public DbSet<UserApp>? UserApp { get; set; }
         public DbSet<RoleApp>? RoleApp { get; set; }
         public DbSet<Clan>? Clan { get; set; }
         public DbSet<Candidature>? Candidature { get; set; }
